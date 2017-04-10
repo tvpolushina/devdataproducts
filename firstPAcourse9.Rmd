@@ -1,0 +1,22 @@
+---
+title: "8 April 2017"
+output: html_document
+---
+
+
+```{r, echo=FALSE}
+library(leaflet)
+df = data.frame(lat=c(60.3740042,60.387653), lng = c(5.361455, 5.321544))
+uibicon = makeIcon(
+  iconUrl = "http://www.uib.no/sites/w3.uib.no/files/styles/large/public/w2/ui/uib_logo_1.jpg?itok=LjwYKlGn",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+uibsites = c("<a href = 'http://www.uib.no/en/clin2'>Department of Clinical Science</a>","<a href = 'http://www.uib.no/en/universitymuseum'>University museum of Bergen</a>")
+df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon=uibicon, popup =uibsites)
+
+```
